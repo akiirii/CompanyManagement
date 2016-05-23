@@ -20,23 +20,25 @@
 You will have to develop this application based on the following specifications:
 
 1. As the app's user when open the application I want to see:
-	- the company's name
-	- the company's	description
-	- a list with all the departments names
+	* the company's name
+	* the company's	description
+	* a list with all the departments names
 
 2. When clicking on a department I get redirected to the department's page where I see:
-	- department's name
-	- department's description
-	- all the information about the team leader (including a list of all its skills with their values)
-	- a list of all the members names of the department
+	* department's name
+	* department's description
+	* all the information about the team leader (including a list of all its skills with their values)
+	* a list of all the members names of the department
 
 3. When clicking on a member's name I get redirected to the member's page where I see:
-	- all the informations about the member (including a list of all it's skills with their values)
-	- 2 buttons (initially disabled) SAVE and UNDO
+	* all the information about the member (including a list of all it's skills with their values)
+	* 2 buttons (initially disabled) SAVE and UNDO
 
 4. On the member's page I have possibility to change the values of its skills:
-    - the SAVE and UNDO buttons will be enabled. And the actual value change will be made only when the SAVE button is clicked
-    - the UNDO button will, of course, undo that change
+    * the SAVE and UNDO buttons will be enabled. And the actual value change will be made only when the SAVE button is clicked
+    * the UNDO button will, of course, undo that change
+
+5. Everything you develop must be tested, karma is already added to the node_modules
 
 
 # EXTRA POINTS
@@ -53,5 +55,9 @@ You will have to develop this application based on the following specifications:
 # SUGGESTIONS
 
 1. Gulp file only provides the basic flow, you are free to add as many tasks(sequence of tasks) as you need for a smooth development process;
-2. The endpoints (on apiary-mock) contains mock data and, even though PUT and POST requests are allowed you will NOT change the actual data;
+
+2. The endpoints are on apiary-mock and, even though PUT and POST requests are allowed you will NOT change the actual data;
+
 3. If, for any reason, you might get stuck, don't waste time, fell free to contact us for suggestions or ideas (we encourage and appreciate team work);
+
+
