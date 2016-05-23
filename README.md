@@ -1,5 +1,8 @@
-# CompanyManagement
-A small application to manage the departments inside of a company
+# COMPANY MANAGEMENT
+
+A small application to manage the departments inside of a company.
+
+The data structure regarding the company is defined in data.structure.js files in the root folder
 
 
 # SPECIFICATIONS
