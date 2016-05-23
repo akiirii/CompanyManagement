@@ -17,7 +17,7 @@
 
 # SPECIFICATIONS
 
-You will have to develop this application based on the following specification:
+You will have to develop this application based on the following specifications:
 
 1. As the app's user when open the application I want to see:
 	- the company's name
