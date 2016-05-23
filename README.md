@@ -2,7 +2,11 @@
 
 A small application to manage the departments inside of a company.
 
-The data structure regarding the company is defined in [data.structure.js](data.structure.js) file in the root folder
+The data structure regarding the company is defined in [data.structure.js](data.structure.js) file in the root folder.
+
+The necessary data for this application is found at the following end point: http://private-ec80e4-companymanagement.apiary-mock.com/
+
+The [app/cm.config.js](cm.config.js) file, already provides Restangular the necessary end point
 
 
 # SPECIFICATIONS
