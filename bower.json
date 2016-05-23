@@ -1,0 +1,29 @@
+{
+  "name": "cm",
+  "description": "A companys management applicantion",
+  "main": "app/index.html",
+  "authors": [
+    "Dinca Roberto"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "test",
+    "front-end"
+  ],
+  "homepage": "www.key4talent.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.5.5",
+    "angular-animate": "~1.5.5",
+    "angular-ui-router": "~0.2.15",
+    "restangular": "~1.5.1",
+    "angular-messages": "~1.5.5",
+    "angular-material": "~1.0.1"
+  }
+}
