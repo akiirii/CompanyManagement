@@ -56,8 +56,10 @@ You will have to develop this application based on the following specifications:
 
 1. Gulp file only provides the basic flow, you are free to add as many tasks(sequence of tasks) as you need for a smooth development process;
 
-2. The endpoints are on apiary-mock and, even though PUT and POST requests are allowed you will NOT change the actual data;
+2. For a clear access and overview of the api requests/responses, there is a [postman collection file](CompanyManagement.postman_collection.json) in the root folder. Just import the collection in Postman and you are ready to call the available api;
 
-3. If, for any reason, you might get stuck, don't waste time, fell free to contact us for suggestions or ideas (we encourage and appreciate team work);
+3. The endpoints are on apiary-mock and, even though PUT and POST requests are allowed you will NOT change the actual data;
+
+4. If, for any reason, you might get stuck, don't waste time, fell free to contact us for suggestions or ideas (we encourage and appreciate team work);
 
 
