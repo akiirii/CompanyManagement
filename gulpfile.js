@@ -11,6 +11,7 @@ var gulp = require('gulp'),
     inject = require('gulp-inject'),
     browserSync = require('browser-sync').create(),
     reload = browserSync.reload,
+    Server = require('karma').Server;
     runSequence = require('run-sequence');
 
 
@@ -36,6 +37,13 @@ gulp.task('build', function () {
         .pipe(gulp.dest('./app'));
     }
 );
+
+
+gulp.task('test', function (done) {
+    new Server({
+        configFile: __dirname + '/test/karma.conf.js'
+    },done).start();
+});
 
 
 gulp.task('default', function () {

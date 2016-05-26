@@ -14,6 +14,8 @@
 
 
     function companyController(Company) {
+        var vm = this;
         
+        vm.info = Company
     }
 })();
