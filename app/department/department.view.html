@@ -1,0 +1,44 @@
+<md-card ng-controller="departmentController">
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">The information about the department</span>
+        </md-card-title-text>
+    </md-card-title>
+
+    <md-card-content >
+      <div layout="row" layout-align="center center" ng-show="!loaded">
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+      </div>
+      <div ng-show="loaded" >
+
+        <span class="md-title"> {{ department.name }}</span>
+        <h5>{{ department.description }}</h5>
+
+        <div layout="row">
+          <div flex>
+            <span class="md-title">The information about the team leader</span>
+            <md-list>
+              <md-list-item> <p> Name: {{department.teamLeader.name}} </p></md-list-item>
+              <md-list-item> <p> Gender: {{department.teamLeader.gender}} </p></md-list-item>
+              <md-list-item> <p> Job: {{department.teamLeader.job}} </p></md-list-item>
+              <md-list-item> <p> Description: {{department.teamLeader.description}} </p></md-list-item>
+              <md-list-item>
+                <p> Skills: <span class="comma" ng-repeat="(name, skill)  in department.teamLeader.skills">{{name}}:{{skill}}<span></p>
+              </md-list-item>
+            <md-list>
+          </div>
+
+          <div flex>
+            <span class="md-title">Department members</span>
+            <md-list>
+              <md-list-item ng-repeat="member in members" ng-click="seeMemberDetails(member.id)">
+                <p>{{member.name}}</p>
+              </md-list-item>
+            <md-list>
+          </div>
+        </div>
+        </div>
+
+
+    </md-card-content>
+</md-card>

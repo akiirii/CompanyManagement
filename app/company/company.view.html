@@ -1,9 +1,25 @@
 <md-card ng-controller="companyController">
-    <md-card-title>
-        <md-card-title-text>
-            Company
-        </md-card-title-text>
+  <md-card-title>
+      <md-card-title-text ng-show="loaded">
+          <span class="md-headline"> The information about the company</span>
+      </md-card-title-text>
+  </md-card-title>
 
-    </md-card-title>
-    <md-card-content></md-card-content>
+  <md-card-content>
+    <div layout="row" layout-align="center center" ng-show="!loaded">
+      <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </div>
+
+    <div ng-show="loaded">
+      <span class="md-title">{{ company.name }}</span>
+      <h5>{{company.description}}</h5>
+
+      <md-list >
+        <md-list-item ng-repeat="department in departments" ng-click="seeDepartmentDetails(department.id)">
+          <p>{{department.name}}</p>
+        </md-list-item>
+      <md-list>
+    </div>
+
+  </md-card-content>
 </md-card>

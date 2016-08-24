@@ -1,0 +1,23 @@
+<md-card ng-controller="memberController">
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">The information about the member</span>
+        </md-card-title-text>
+    </md-card-title>
+
+    <md-card-content layout="row">
+      <div layout="row" layout-align="center center" ng-show="!loaded">
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+      </div>
+
+      <md-list ng-show="loaded">
+        <md-list-item> <p> Name: {{member.name}} </p></md-list-item>
+        <md-list-item> <p> Gender: {{member.gender}} </p></md-list-item>
+        <md-list-item> <p> Job: {{member.job}} </p></md-list-item>
+        <md-list-item> <p> Description: {{member.description}} </p></md-list-item>
+        <md-list-item>
+          <p> Skills: <span class="comma" ng-repeat="(name, skill)  in member.skills">{{name}}:{{skill}}<span></p>
+        </md-list-item>
+      <md-list>
+    </md-card-content>
+</md-card>

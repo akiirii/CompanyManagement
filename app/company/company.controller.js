@@ -13,9 +13,23 @@
         .controller('companyController', companyController);
 
 
-    function companyController(Company) {
+    function companyController($scope, $q, $state, Company) {
         var vm = this;
-        
         vm.info = Company
+
+        $q.all({
+          company: vm.info.getCompany(),
+          departments: vm.info.getDepartments()
+        }).then(function(data){
+          $scope.company = data.company.plain();
+          $scope.departments = data.departments.plain();
+          $scope.loaded = true;
+        });
+
+        $scope.seeDepartmentDetails = function(id){
+          $state.go('department', {
+            departmentId: id
+          });
+        }
     }
 })();

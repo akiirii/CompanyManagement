@@ -10,19 +10,16 @@
 
     angular
         .module("cm")
-        .factory("Company", Company);
+        .factory("Department", Department);
 
     /*@ngInject*/
-    function Company(Restangular) {
+    function Department(Restangular) {
         return {
-          getCompany(){
-            return Restangular.one("company").get("");
-          },
-          getDepartments(){
-            return Restangular.one("company").all("departments").get("");
-          },
-          getDepartment(id){
+          get(id){
             return Restangular.one("company").all("departments").get(id);
+          },
+          getMembers(id){
+            return Restangular.one("company").all("departments/" + id).get("members");
           },
         };
     }
