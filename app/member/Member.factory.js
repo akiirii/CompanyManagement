@@ -1,9 +1,3 @@
-/**
- * Created by:  Dinca Roberto
- * On:          21/05/2016
- * For project: companyManagement
- * Description: Small test to make sure the api call works
- */
 
 (function () {
     'use strict';
@@ -17,6 +11,18 @@
         return {
           get(departmentId, memberId){
             return Restangular.one("company").all("departments/" + departmentId + "/members").get(memberId);
+          },
+          save(departmentId, memberId, skill){
+            var route = "departments/" + departmentId + "/members/" + memberId + "/skills";
+            return Restangular.all("company").one(route).put("", skill);
+          },
+          add(departmentId, memberId, skill){
+            var route = "departments/" + departmentId + "/members/" + memberId + "/skills";
+            return Restangular.all("company").one(route).post("", skill);
+          },
+          remove(departmentId, memberId, skill){
+            var route = "departments/" + departmentId + "/members/" + memberId + "/skills";
+            return Restangular.all("company").one(route).remove("", skill);
           },
         };
     }
