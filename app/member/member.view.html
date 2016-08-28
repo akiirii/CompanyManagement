@@ -27,17 +27,21 @@
         <md-whiteframe  layout-padding  class="md-whiteframe-1dp">
             <form name="memberSkills" ng-submit="save()">
 
-              <p>Edit skills</p>
+              <div layout="row" layout-align="start start">
+                <p>Remove all skills: </p>
+                <md-button class="md-warn" ng-click="remove()">Remove</md-button>
+              </div>
+
+              <p>Add new skills: </p>
+              <add-skills class="md-block" added-skills="addedSkills" skills="skills"></add-skills>
+
+              <p>Edit skills: </p>
               <div layout="row" ng-repeat="(name, value)  in skills" layout-align="center start">
                 <md-input-container flex class="md-block">
                   <label>{{ name }}</label>
                   <input name="{{name}} " ng-model="skills[name]" min="0" type="number" step="1"/>
                 </md-input-container>
-                <md-button class="md-warn" ng-click="remove(name, value)">Remove</md-button>
               </div>
-
-              <p>Add new skills</p>
-              <add-skills class="md-block" added-skills="addedSkills" skills="skills"></add-skills>
 
               <div layout="row" layout-align="end center">
                 <md-button class="md-raised" ng-click="undo()" ng-disabled="memberSkills.$pristine || !deletedSkils">Undo</md-button>

@@ -9,14 +9,14 @@
     /*@ngInject*/
     function Department(Restangular) {
         return {
-          get(id){
+          get: function(id){
             return Restangular.one("company").all("departments").get(id);
           },
-          getMembers(id){
-            return Restangular.one("company").all("departments/" + id).get("members");
+          getMembers: function(id){
+            return Restangular.all("company").one("departments", id).one("members").get();
           },
-          addMember(id, member){
-            return Restangular.all("company").one("departments/" + id + "/members").post("", member);
+          addMember: function(id, member){
+            return Restangular.all("company").one("departments", id).one("/members").post("", member);
           },
         };
     }

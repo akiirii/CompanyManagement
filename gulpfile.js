@@ -21,8 +21,8 @@ gulp.task('watch', function () {
             baseDir: "./app"
         }
     });
-    //gulp.watch('app/**/*.html', reload);
-    //gulp.watch('app/**/*.js', reload);
+    gulp.watch('app/**/*.html', reload);
+    gulp.watch('app/**/*.js', reload);
 });
 
 

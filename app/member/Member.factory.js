@@ -9,20 +9,17 @@
     /*@ngInject*/
     function Member(Restangular) {
         return {
-          get(departmentId, memberId){
+          get: function(departmentId, memberId){
             return Restangular.one("company").all("departments/" + departmentId + "/members").get(memberId);
           },
-          save(departmentId, memberId, skills){
-            var route = "departments/" + departmentId + "/members/" + memberId + "/skills";
-            return Restangular.all("company").one(route).put("", skills);
+          save: function(departmentId, memberId, skill){
+            return Restangular.all("company").one('departments', departmentId).one('members', memberId).one('skills', skill).put();
           },
-          add(departmentId, memberId, skills){
-            var route = "departments/" + departmentId + "/members/" + memberId + "/skills";
-            return Restangular.all("company").one(route).post("", skills);
+          add: function(departmentId, memberId, skills){
+            return Restangular.all("company").one('departments', departmentId).one('members', memberId).one('skills').post("", skills);
           },
-          remove(departmentId, memberId, skills){
-            var route = "departments/" + departmentId + "/members/" + memberId + "/skills";
-            return Restangular.all("company").one(route).remove("", skills);
+          remove: function(departmentId, memberId, skill){
+            return Restangular.all("company").one('departments', departmentId).one('members', memberId).one('skills').remove();
           },
         };
     }

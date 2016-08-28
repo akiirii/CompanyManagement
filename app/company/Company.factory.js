@@ -15,13 +15,13 @@
     /*@ngInject*/
     function Company(Restangular) {
         return {
-          getCompany(){
+          getCompany: function(){
             return Restangular.one("company").get("");
           },
-          getDepartments(){
+          getDepartments: function(){
             return Restangular.one("company").all("departments").get("");
           },
-          getDepartment(id){
+          getDepartment: function(id){
             return Restangular.one("company").all("departments").get(id);
           },
         };
