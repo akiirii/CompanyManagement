@@ -1,0 +1,13 @@
+<form name="addSkills" ng-submit="add(name, skill)" class="md-inline-form">
+  <md-input-container>
+    <label>New skill name</label>
+    <input name="newName" ng-model="name" type="text"/>
+  </md-input-container>
+
+  <md-input-container>
+    <label>New skill value</label>
+    <input name="newSkill" ng-model="skill" min="0" type="number" step="1"/>
+  </md-input-container>
+
+  <md-button type="submit" class="md-raised md-primary" ng-disabled="!skill || !name">Add</md-button>
+</form>

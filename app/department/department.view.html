@@ -37,7 +37,40 @@
             <md-list>
           </div>
         </div>
-        </div>
+
+
+        <form name="newMember" ng-submit="addMember()">
+          <md-input-container>
+            <label>Name</label>
+            <input name="name" ng-model="new.name" type="text"/>
+          </md-input-container>
+
+          <md-input-container>
+            <label>Gender</label>
+            <md-radio-group ng-model="new.gender">
+              <md-radio-button value="M">M</md-radio-button>
+              <md-radio-button value="F">F</md-radio-button>
+            </md-radio-group>
+          </md-input-container>
+
+          <md-input-container>
+            <label>job</label>
+            <input name="job" ng-model="new.job" type="text"/>
+          </md-input-container>
+
+          <md-input-container>
+            <label>Description</label>
+            <input name="description" ng-model="new.description" type="text"/>
+          </md-input-container>
+
+          <md-button type="submit" class="md-raised md-primary">Add member</md-button>
+        </form>
+
+        <add-skills skills="new.skills"></add-skills>
+
+      </div>
+
+
 
 
     </md-card-content>

@@ -35,21 +35,9 @@
                     <md-button class="md-raised md-primary" type="submit" ng-disabled="memberSkills.$pristine">Save</md-button>
                   </md-list-item>
                 </form>
-                
+
                 <md-list-item>
-                  <form name="addSkills" ng-submit="add(name, skill)" class="md-inline-form">
-                    <md-input-container>
-                      <label>New skill name</label>
-                      <input name="newName" ng-model="name" type="text"/>
-                    </md-input-container>
-
-                    <md-input-container>
-                      <label>New skill value</label>
-                      <input name="newSkill" ng-model="skill" min="0" type="number" step="1"/>
-                    </md-input-container>
-
-                    <md-button type="submit" class="md-raised md-primary" ng-disabled="!skill || !name">Add Skill</md-button>
-                  </form>
+                  <add-skills skills="skills"></add-skills>
                 </md-list-item>
 
               </md-list>

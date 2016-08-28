@@ -15,6 +15,9 @@
           getMembers(id){
             return Restangular.one("company").all("departments/" + id).get("members");
           },
+          addMember(id, member){
+            return Restangular.all("company").one("departments/" + id + "/members").post("", member);
+          },
         };
     }
 })();

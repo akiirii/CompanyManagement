@@ -24,6 +24,7 @@
 
         $scope.save = function(){
           $scope.member.skills = angular.copy($scope.skills);
+          
           vm.info.save($stateParams.departmentId, $stateParams.memberId, $scope.member.skills).then(function(success){
             $scope.msg = success.status
           }, function(error){

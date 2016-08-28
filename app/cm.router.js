@@ -19,11 +19,11 @@
                 templateUrl: "/company/company.view.html",
             })
             .state('department', {
-                url: "departments/:departmentId",
+                url: "/departments/:departmentId",
                 templateUrl: "/department/department.view.html"
             })
             .state('member', {
-                url: "departments/:departmentId/member/:memberId",
+                url: "/departments/:departmentId/member/:memberId",
                 templateUrl: "/member/member.view.html"
             })
     }
