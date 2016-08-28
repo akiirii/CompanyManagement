@@ -7,9 +7,11 @@
         .controller('memberController', memberController);
 
 
-    function memberController($scope, $stateParams, Member) {
+    function memberController($scope, $stateParams, Member, $mdToast, $q) {
         var vm = this;
         vm.info = Member
+        $scope.deletedSkils = {};
+        $scope.addedSkills = {};
 
         vm.info.get($stateParams.departmentId, $stateParams.memberId).then(function(data){
           $scope.member = data.plain();
@@ -23,36 +25,35 @@
         }
 
         $scope.save = function(){
-          $scope.member.skills = angular.copy($scope.skills);
-          
-          vm.info.save($stateParams.departmentId, $stateParams.memberId, $scope.member.skills).then(function(success){
-            $scope.msg = success.status
+          var requests = [];
+          if($scope.deletedSkils){
+            requests.push(vm.info.remove($stateParams.departmentId, $stateParams.memberId, $scope.deletedSkils))
+          }
+          if($scope.addedSkills){
+            requests.push(vm.info.add($stateParams.departmentId, $stateParams.memberId, $scope.addedSkills))
+          }
+
+          var tmpskills = angular.copy($scope.skills);
+          _.map($scope.addedSkills, function(name){ delete tmpskills[name] })
+
+          if(tmpskills){
+            requests.push(vm.info.remove($stateParams.departmentId, $stateParams.memberId, tmpskills))
+          }
+
+          $q.all(requests).then(function(success){
+            $scope.showMsg("Success")
           }, function(error){
-            $scope.msg = error.status
+            $scope.showMsg("Error")
           });
         }
 
-        $scope.add = function(name, skill){
-          if(name && skill){
-            vm.info.save($stateParams.departmentId, $stateParams.memberId, $scope.member.skills).then(function(success){
-              $scope.member.skills[name] = skill;
-              $scope.skills[name] = skill;
-              $scope.name = '',
-              $scope.skill = undefined;
-            }, function(error){
-              $scope.msg = error.status
-            });
-          }
-        }
+        $scope.showMsg = function(text) {
+          $mdToast.show($mdToast.simple().textContent(text).hideDelay(3000));
+        };
 
         $scope.remove = function(name, skill){
-          vm.info.save($stateParams.departmentId, $stateParams.memberId, $scope.skills[name]).then(function(success){
-            delete $scope.skills[name];
-            delete $scope.member.skills[name];
-            $scope.msg = success.status
-          }, function(error){
-            $scope.msg = error.status
-          });
+          delete $scope.skills[name];
+          $scope.deletedSkils[name] = skill;
         }
 
 

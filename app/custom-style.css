@@ -1,11 +1,3 @@
-span.comma:not(:last-child):after {
+.comma:not(:last-child):after {
   content: ', '
-}
-
-.padding {
-  padding: 0 15px;
-}
-
-.padding-top {
-  padding-top: 5px;
 }

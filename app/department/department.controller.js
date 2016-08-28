@@ -6,7 +6,7 @@
         .controller('departmentController', departmentController);
 
 
-    function departmentController($scope, $q, $state, $stateParams, Department) {
+    function departmentController($scope, $q, $state, $stateParams, Department, $mdToast) {
         var vm = this;
         vm.info = Department
 
@@ -30,11 +30,15 @@
           });
         }
 
+        $scope.showMsg = function(text) {
+          $mdToast.show($mdToast.simple().textContent(text).hideDelay(3000));
+        };
+
         $scope.addMember = function(){
           vm.info.addMember($stateParams.departmentId, $scope.new).then(function(success){
-            $scope.msg = success.status
+            $scope.showMsg(success.status)
           }, function(error){
-            $scope.msg = error.status
+            $scope.showMsg(error.status)
           });
         }
     }

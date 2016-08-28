@@ -1,25 +1,30 @@
-<md-card ng-controller="companyController">
+
+<md-card class="md-padding" ng-controller="companyController">
   <md-card-title>
       <md-card-title-text ng-show="loaded">
-          <span class="md-headline"> The information about the company</span>
+          <span class="md-headline"> The information about the company:</span>
       </md-card-title-text>
   </md-card-title>
 
   <md-card-content>
-    <div layout="row" layout-align="center center" ng-show="!loaded">
+    <div layout="row" layout-align="center center" ng-if="!loaded">
       <md-progress-circular md-mode="indeterminate"></md-progress-circular>
     </div>
 
-    <div ng-show="loaded">
-      <span class="md-title">{{ company.name }}</span>
-      <h5>{{company.description}}</h5>
+    <div ng-if="loaded"  layout="row">
+      <md-content flex>
+        <md-subheader class="md-no-sticky"> The company's name: <strong>{{ company.name }}</strong></md-subheader>
+        <p class="md-padding">{{company.description}}</p>
+      </md-content>
 
-      <md-list >
-        <md-list-item ng-repeat="department in departments" ng-click="seeDepartmentDetails(department.id)">
-          <p>{{department.name}}</p>
-        </md-list-item>
-      <md-list>
+      <md-content flex>
+        <md-subheader class="md-no-sticky">All the departments</md-subheader>
+        <md-list>
+          <md-list-item ng-repeat="department in departments" ng-click="seeDepartmentDetails(department.id)">
+            <p>{{department.name}}</p>
+          </md-list-item>
+        <md-list>
+      </md-content>
     </div>
-
   </md-card-content>
 </md-card>

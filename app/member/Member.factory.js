@@ -12,17 +12,17 @@
           get(departmentId, memberId){
             return Restangular.one("company").all("departments/" + departmentId + "/members").get(memberId);
           },
-          save(departmentId, memberId, skill){
+          save(departmentId, memberId, skills){
             var route = "departments/" + departmentId + "/members/" + memberId + "/skills";
-            return Restangular.all("company").one(route).put("", skill);
+            return Restangular.all("company").one(route).put("", skills);
           },
-          add(departmentId, memberId, skill){
+          add(departmentId, memberId, skills){
             var route = "departments/" + departmentId + "/members/" + memberId + "/skills";
-            return Restangular.all("company").one(route).post("", skill);
+            return Restangular.all("company").one(route).post("", skills);
           },
-          remove(departmentId, memberId, skill){
+          remove(departmentId, memberId, skills){
             var route = "departments/" + departmentId + "/members/" + memberId + "/skills";
-            return Restangular.all("company").one(route).remove("", skill);
+            return Restangular.all("company").one(route).remove("", skills);
           },
         };
     }

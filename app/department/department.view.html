@@ -1,77 +1,85 @@
-<md-card ng-controller="departmentController">
-    <md-card-title>
-        <md-card-title-text>
-            <span class="md-headline">The information about the department</span>
-        </md-card-title-text>
-    </md-card-title>
+<md-card class="md-padding" ng-controller="departmentController">
+  <md-card-title>
+      <md-card-title-text>
+          <span class="md-headline">The information about the department</span>
+      </md-card-title-text>
+  </md-card-title>
 
-    <md-card-content >
-      <div layout="row" layout-align="center center" ng-show="!loaded">
-        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
-      </div>
-      <div ng-show="loaded" >
+  <md-card-content>
+    <div layout="row" layout-align="center center" ng-show="!loaded">
+      <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </div>
 
-        <span class="md-title"> {{ department.name }}</span>
-        <h5>{{ department.description }}</h5>
+    <div ng-if="loaded">
+      <md-content>
+        <md-subheader class="md-no-sticky"> The company's name: <strong>{{ department.name }}</strong></md-subheader>
+        <p class="md-padding">{{department.description}}</p>
+      </md-content>
 
-        <div layout="row">
-          <div flex>
-            <span class="md-title">The information about the team leader</span>
-            <md-list>
-              <md-list-item> <p> Name: {{department.teamLeader.name}} </p></md-list-item>
-              <md-list-item> <p> Gender: {{department.teamLeader.gender}} </p></md-list-item>
-              <md-list-item> <p> Job: {{department.teamLeader.job}} </p></md-list-item>
-              <md-list-item> <p> Description: {{department.teamLeader.description}} </p></md-list-item>
-              <md-list-item>
-                <p> Skills: <span class="comma" ng-repeat="(name, skill)  in department.teamLeader.skills">{{name}}:{{skill}}<span></p>
-              </md-list-item>
-            <md-list>
-          </div>
+      <md-divider></md-divider>
 
-          <div flex>
-            <span class="md-title">Department members</span>
-            <md-list>
-              <md-list-item ng-repeat="member in members" ng-click="seeMemberDetails(member.id)">
-                <p>{{member.name}}</p>
-              </md-list-item>
-            <md-list>
-          </div>
+      <md-content layout="row">
+        <div flex>
+          <md-subheader class="md-no-sticky">The information about the team leader</md-subheader>
+          <md-list>
+            <md-list-item> <p> Name: {{department.teamLeader.name}} </p></md-list-item>
+            <md-list-item> <p> Gender: {{department.teamLeader.gender}} </p></md-list-item>
+            <md-list-item> <p> Job: {{department.teamLeader.job}} </p></md-list-item>
+            <md-list-item> <p> Description: {{department.teamLeader.description}} </p></md-list-item>
+            <md-list-item>
+              <p> Skills: <span class="comma" ng-repeat="(name, skill)  in department.teamLeader.skills">{{name}}:{{skill}}<span></p>
+            </md-list-item>
+          <md-list>
         </div>
 
+        <div flex>
+          <md-subheader class="md-no-sticky">Department members</md-subheader>
+          <md-list>
+            <md-list-item ng-repeat="member in members" ng-click="seeMemberDetails(member.id)">
+              <p>{{member.name}}</p>
+            </md-list-item>
+          <md-list>
+        </div>
+        </div>
+      </md-content>
+    </div>
+  </md-card-content>
 
-        <form name="newMember" ng-submit="addMember()">
-          <md-input-container>
-            <label>Name</label>
-            <input name="name" ng-model="new.name" type="text"/>
-          </md-input-container>
+  <md-card-actions layout="row" layout-align="end center">
+    <md-button ng-click="showForm = true">Add new Member</md-button>
+  </md-card-actions>
 
-          <md-input-container>
-            <label>Gender</label>
-            <md-radio-group ng-model="new.gender">
-              <md-radio-button value="M">M</md-radio-button>
-              <md-radio-button value="F">F</md-radio-button>
-            </md-radio-group>
-          </md-input-container>
+  <md-content ng-if="showForm"  layout="row" layout-align="center center">
+    <md-whiteframe  layout-padding  class="md-whiteframe-1dp">
+      <form name="newMember" ng-submit="addMember()">
 
-          <md-input-container>
-            <label>job</label>
-            <input name="job" ng-model="new.job" type="text"/>
-          </md-input-container>
+        <md-subheader class="md-no-sticky">Add new Member</md-subheader>
+        <md-input-container class="md-block">
+          <label>Name</label>
+          <input required name="name" ng-model="new.name" type="text"/>
+        </md-input-container>
 
-          <md-input-container>
-            <label>Description</label>
-            <input name="description" ng-model="new.description" type="text"/>
-          </md-input-container>
+        <md-radio-group required ng-model="new.gender" class="md-inline-form">
+          <md-radio-button value="M">Male</md-radio-button>
+          <md-radio-button value="F">Female</md-radio-button>
+        </md-radio-group>
 
-          <md-button type="submit" class="md-raised md-primary">Add member</md-button>
-        </form>
+        <md-input-container class="md-block">
+          <label>job</label>
+          <input required name="job" ng-model="new.job" type="text"/>
+        </md-input-container>
 
-        <add-skills skills="new.skills"></add-skills>
+        <md-input-container class="md-block">
+          <label>Description</label>
+          <input required name="description" ng-model="new.description" type="text"/>
+        </md-input-container>
 
-      </div>
+        <p> Skills: <span class="comma" ng-repeat="(name, skill)  in new.skills">{{name}}:{{skill}}<span></p>
 
+        <add-skills class="md-block" skills="new.skills"></add-skills>
 
-
-
-    </md-card-content>
+        <div layout="row" layout-align="end center"><md-button type="submit" class="md-raised md-primary" >Add member</md-button></div>
+      </form>
+    </md-whiteframe>
+  </md-content>
 </md-card>

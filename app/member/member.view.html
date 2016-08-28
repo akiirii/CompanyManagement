@@ -1,51 +1,51 @@
-<md-card ng-controller="memberController">
-    <md-card-title>
-        <md-card-title-text>
-            <span class="md-headline">The information about the member</span>
-        </md-card-title-text>
-    </md-card-title>
 
-    <md-card-content>
-      <div layout="row" layout-align="center center" ng-show="!loaded">
-        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
-      </div>
+<md-card class="md-padding" ng-controller="memberController">
+  <md-card-title>
+      <md-card-title-text>
+          <span class="md-headline">The information about the member</span>
+      </md-card-title-text>
+  </md-card-title>
 
-      <md-list ng-show="loaded">
-        <md-list-item> <p> Name: {{member.name}} </p></md-list-item>
-        <md-list-item> <p> Gender: {{member.gender}} </p></md-list-item>
-        <md-list-item> <p> Job: {{member.job}} </p></md-list-item>
-        <md-list-item> <p> Skills:</p></md-list-item>
-        <md-list-item>
-          <div ng-show="loaded" class="padding" layout="row" layout-align="start start">
+  <md-card-content>
+    <div layout="row" layout-align="center center" ng-show="!loaded">
+      <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </div>
 
-              <md-list>
-                <form name="memberSkills" ng-submit="!memberSkills.$valid || save()">
-                  <md-list-item ng-repeat="(name, skill)  in skills">
-                      <div class="md-inline-form">
-                        <md-input-container>
-                          <label>{{ name }}</label>
-                          <input name="{{name}}" ng-model="skill" min="0" type="number" step="1"/>
-                        </md-input-container>
-                        <md-button class="md-warn" ng-click="remove(name)">Remove</md-button>
-                      </div>
-                  </md-list-item>
+    <div ng-if="loaded">
+      <md-content>
+        <md-list>
+          <md-list-item> <p> Name: {{member.name}} </p></md-list-item>
+          <md-list-item> <p> Gender: {{member.gender}} </p></md-list-item>
+          <md-list-item> <p> Job: {{member.job}} </p></md-list-item>
+          <md-list-item>
+            <p> Skills: <span class="comma" ng-repeat="(name, skill)  in member.skills">{{name}} : {{skill}}<span></p>
+          </md-list-item>
+        </md-list>
+      </md-content>
 
-                  <md-list-item>
-                    <md-button class="md-raised" ng-click="undo()" ng-disabled="memberSkills.$pristine">Undo</md-button>
-                    <md-button class="md-raised md-primary" type="submit" ng-disabled="memberSkills.$pristine">Save</md-button>
-                  </md-list-item>
-                </form>
+      <md-content  layout="row" layout-align="start center">
+        <md-whiteframe  layout-padding  class="md-whiteframe-1dp">
+            <form name="memberSkills" ng-submit="save()">
 
-                <md-list-item>
-                  <add-skills skills="skills"></add-skills>
-                </md-list-item>
+              <p>Edit skills</p>
+              <div layout="row" ng-repeat="(name, value)  in skills" layout-align="center start">
+                <md-input-container flex class="md-block">
+                  <label>{{ name }}</label>
+                  <input name="{{name}} " ng-model="skills[name]" min="0" type="number" step="1"/>
+                </md-input-container>
+                <md-button class="md-warn" ng-click="remove(name, value)">Remove</md-button>
+              </div>
 
-              </md-list>
-          </div>
+              <p>Add new skills</p>
+              <add-skills class="md-block" added-skills="addedSkills" skills="skills"></add-skills>
 
-        </md-list-item>
-      </md-list>
+              <div layout="row" layout-align="end center">
+                <md-button class="md-raised" ng-click="undo()" ng-disabled="memberSkills.$pristine || !deletedSkils">Undo</md-button>
+                <md-button class="md-raised md-primary" type="submit" ng-disabled="memberSkills.$pristine || !deletedSkils">Save</md-button>
+              </div>
+            </form>
+        </md-whiteframe>
+      </md-content>
 
-
-    </md-card-content>
+  </md-card-content>
 </md-card>

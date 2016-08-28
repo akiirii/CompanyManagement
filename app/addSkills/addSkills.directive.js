@@ -11,23 +11,14 @@
         return {
           templateUrl: "/addSkills/addSkills.html",
           scope: {
-            skills: "="
+            skills: "=",
+            addedSkills: "=?"
           },
           controller: ['$scope', function addSkillsController($scope) {
-
             $scope.add = function(name, skill){
-              console.log(name, skill)
               if(name && skill){
-                // vm.info.save($stateParams.departmentId, $stateParams.memberId, $scope.member.skills).then(function(success){
-                //   $scope.member.skills[name] = skill;
-                //   $scope.skills[name] = skill;
-                //   $scope.name = '',
-                //   $scope.skill = undefined;
-                // }, function(error){
-                //   $scope.msg = error.status
-                // });
-
                 $scope.skills[name] = skill;
+                $scope.addedSkills[name] = skill;
               }
             }
           }],

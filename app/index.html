@@ -3,14 +3,17 @@
         <title>Company Management</title>
         <!-- bower:css -->
         <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+        <link rel="stylesheet" href="custom-style.css">
         <!-- endinject -->
         <!-- inject:css -->
          <!-- endinject -->
     </head>
 
     <body ng-app="cm">
-
-        <div ui-view></div>
+      <md-toolbar>
+        <div class="md-toolbar-tools"><h3>Company Management</h3></div>
+      </md-toolbar>
+      <div ui-view></div>
 
         <!-- bower:js -->
         <script src="bower_components/angular/angular.js"></script>
